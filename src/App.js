@@ -1,7 +1,11 @@
+import TrackInfo from "./components/TrackInfo";
+import Player from "./components/Player"
+
 function App() {
   return (
     <div className="App">
-      <h2>Music Player</h2>
+      <TrackInfo />
+      <Player />
     </div>
   );
 }
