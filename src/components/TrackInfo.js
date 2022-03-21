@@ -1,9 +1,9 @@
-const TrackInfo = () => {
+const TrackInfo = ({ currentTrack }) => {
   return (
     <div className="track-info-container">
-      <h1>Picture</h1>
-      <h1>Song Name</h1>
-      <h1>Artist Name</h1>{" "}
+      <img src={currentTrack.cover} />
+      <h2>{currentTrack.name}</h2>
+      <h3>{currentTrack.artist}</h3>
     </div>
   );
 };
