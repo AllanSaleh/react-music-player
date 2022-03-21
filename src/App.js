@@ -1,3 +1,4 @@
+import "./styles/app.scss"
 import TrackInfo from "./components/TrackInfo";
 import Player from "./components/Player"
 
