@@ -1,6 +1,6 @@
 const Player = () => {
   return (
-    <div className="player">
+    <div className="player-container">
       <h1>Player</h1>
     </div>
   );

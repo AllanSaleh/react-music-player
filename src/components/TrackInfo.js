@@ -1,6 +1,6 @@
 const TrackInfo = () => {
   return (
-    <div className="trackInfo">
+    <div className="track-info-container">
       <h1>TrackInfo</h1>
     </div>
   );
