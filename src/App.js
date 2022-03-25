@@ -10,7 +10,7 @@ function App() {
   return (
     <div className="App">
       <TrackInfo currentTrack={currentTrack} />
-      <Player />
+      <Player currentTrack={currentTrack} />
     </div>
   );
 }
