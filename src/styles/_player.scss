@@ -10,7 +10,7 @@
   display: flex;
   input {
     width: 100%;
-    padding: 1rem 2rem;
+    padding-block: 1rem;
   }
   p {
     padding: 1rem;
@@ -22,7 +22,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 1rem;
-  svg{
-      cursor: pointer;
+  svg {
+    cursor: pointer;
   }
 }
