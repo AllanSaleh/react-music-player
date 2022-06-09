@@ -33,7 +33,12 @@ const Player = ({ currentTrack, isPlaying, setIsPlaying }) => {
     <div className="player-container">
       <div className="duration-bar">
         <p>{formatTime(trackInfo.currentTime)}</p>
-        <input type="range" />
+        <input
+          type="range"
+          min={0}
+          value={trackInfo.currentTime}
+          max={trackInfo.duration}
+        />
         <p>{formatTime(trackInfo.duration)}</p>
       </div>
       <div className="player-controllers">
