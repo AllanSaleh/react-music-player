@@ -1,6 +1,9 @@
-const LibraryTrack = ({ track }) => {
+const LibraryTrack = ({ track, setCurrentTrack }) => {
+  const trackSelectHandler = () => {
+    setCurrentTrack(track);
+  };
   return (
-    <div className="library-track">
+    <div className="library-track" onClick={trackSelectHandler}>
       <img alt={track.name} src={track.cover} />
       <div className="track-details">
         <h3>{track.name}</h3>
