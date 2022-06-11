@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPlay,
@@ -7,8 +7,7 @@ import {
   faPause,
 } from "@fortawesome/free-solid-svg-icons";
 
-const Player = ({ currentTrack, isPlaying, setIsPlaying }) => {
-  const audioRef = useRef(null);
+const Player = ({ audioRef, currentTrack, isPlaying, setIsPlaying }) => {
   const [trackInfo, setTrackInfo] = useState({ currentTime: 0, duration: 0 });
   const playSongHandler = () => {
     if (isPlaying) {

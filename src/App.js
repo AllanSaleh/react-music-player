@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import "./styles/app.scss";
 import TrackInfo from "./components/TrackInfo";
 import Player from "./components/Player";
@@ -9,6 +9,7 @@ function App() {
   const [tracks, setTracks] = useState(data());
   const [currentTrack, setCurrentTrack] = useState(tracks[0]);
   const [isPlaying, setIsPlaying] = useState(false);
+  const audioRef = useRef(null);
   return (
     <div className="App">
       <TrackInfo currentTrack={currentTrack} />
@@ -16,8 +17,14 @@ function App() {
         currentTrack={currentTrack}
         isPlaying={isPlaying}
         setIsPlaying={setIsPlaying}
+        audioRef={audioRef}
       />
-      <Library tracks={tracks} setCurrentTrack={setCurrentTrack} />
+      <Library
+        tracks={tracks}
+        setCurrentTrack={setCurrentTrack}
+        audioRef={audioRef}
+        isPlaying={isPlaying}
+      />
     </div>
   );
 }

@@ -1,6 +1,14 @@
-const LibraryTrack = ({ track, setCurrentTrack }) => {
+const LibraryTrack = ({ track, setCurrentTrack, audioRef, isPlaying }) => {
   const trackSelectHandler = () => {
     setCurrentTrack(track);
+    if (isPlaying) {
+      const playPromise = audioRef.current.play();
+      if (playPromise !== undefined) {
+        playPromise.then((audio) => {
+          audioRef.current.play();
+        });
+      }
+    }
   };
   return (
     <div className="library-track" onClick={trackSelectHandler}>
