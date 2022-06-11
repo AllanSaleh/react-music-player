@@ -3,6 +3,7 @@ import "./styles/app.scss";
 import TrackInfo from "./components/TrackInfo";
 import Player from "./components/Player";
 import data from "./data";
+import Library from "./components/Library";
 
 function App() {
   const [tracks, setTracks] = useState(data());
@@ -16,6 +17,7 @@ function App() {
         isPlaying={isPlaying}
         setIsPlaying={setIsPlaying}
       />
+      <Library tracks={tracks} />
     </div>
   );
 }
