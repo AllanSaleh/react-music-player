@@ -41,7 +41,7 @@ const Player = ({ audioRef, currentTrack, isPlaying, setIsPlaying }) => {
           type="range"
           min={0}
           value={trackInfo.currentTime}
-          max={trackInfo.duration}
+          max={trackInfo.duration || 0}
           onChange={dragHandler}
         />
         <p>{formatTime(trackInfo.duration)}</p>
