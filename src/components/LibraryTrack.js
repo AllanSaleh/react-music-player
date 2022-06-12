@@ -1,6 +1,21 @@
-const LibraryTrack = ({ track, setCurrentTrack, audioRef, isPlaying }) => {
+const LibraryTrack = ({
+  track,
+  setCurrentTrack,
+  audioRef,
+  isPlaying,
+  tracks,
+  setTracks,
+}) => {
   const trackSelectHandler = () => {
     setCurrentTrack(track);
+    const newTracks = tracks.map((song) => {
+      if (song.id === track.id) {
+        return { ...song, active: true };
+      } else {
+        return { ...song, active: false };
+      }
+    });
+    setTracks(newTracks);
     if (isPlaying) {
       const playPromise = audioRef.current.play();
       if (playPromise !== undefined) {
@@ -11,7 +26,10 @@ const LibraryTrack = ({ track, setCurrentTrack, audioRef, isPlaying }) => {
     }
   };
   return (
-    <div className="library-track" onClick={trackSelectHandler}>
+    <div
+      className={`library-track ${track.active ? "selected" : ""}`}
+      onClick={trackSelectHandler}
+    >
       <img alt={track.name} src={track.cover} />
       <div className="track-details">
         <h3>{track.name}</h3>

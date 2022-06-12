@@ -1,6 +1,12 @@
 import LibraryTrack from "./LibraryTrack";
 
-const Library = ({ tracks, setCurrentTrack, audioRef, isPlaying }) => {
+const Library = ({
+  tracks,
+  setTracks,
+  setCurrentTrack,
+  audioRef,
+  isPlaying,
+}) => {
   return (
     <div className="library">
       <h2>Library</h2>
@@ -12,6 +18,8 @@ const Library = ({ tracks, setCurrentTrack, audioRef, isPlaying }) => {
             key={track.id}
             audioRef={audioRef}
             isPlaying={isPlaying}
+            tracks={tracks}
+            setTracks={setTracks}
           />
         ))}
       </div>
