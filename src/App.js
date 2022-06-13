@@ -21,9 +21,11 @@ function App() {
       <TrackInfo currentTrack={currentTrack} />
       <Player
         currentTrack={currentTrack}
+        setCurrentTrack={setCurrentTrack}
         isPlaying={isPlaying}
         setIsPlaying={setIsPlaying}
         audioRef={audioRef}
+        tracks={tracks}
       />
       <Library
         tracks={tracks}
