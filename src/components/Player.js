@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPlay,
@@ -14,6 +14,7 @@ const Player = ({
   isPlaying,
   setIsPlaying,
   tracks,
+  setTracks,
 }) => {
   const [trackInfo, setTrackInfo] = useState({ currentTime: 0, duration: 0 });
   const playSongHandler = () => {
@@ -35,6 +36,11 @@ const Player = ({
     audioRef.current.currentTime = e.target.value;
     setTrackInfo({ ...trackInfo, currentTime: e.target.value });
   };
+  const formatTime = (time) => {
+    return (
+      Math.floor(time / 60) + ":" + ("0" + Math.floor(time % 60)).slice(-2)
+    );
+  };
   const skipTrackHandler = (direction) => {
     const currentTrackIndex = tracks.findIndex(
       (track) => track.id === currentTrack.id
@@ -50,11 +56,16 @@ const Player = ({
       setCurrentTrack(tracks[(currentTrackIndex - 1) % tracks.length]);
     }
   };
-  const formatTime = (time) => {
-    return (
-      Math.floor(time / 60) + ":" + ("0" + Math.floor(time % 60)).slice(-2)
-    );
-  };
+  useEffect(() => {
+    const newTracks = tracks.map((song) => {
+      if (song.id === currentTrack.id) {
+        return { ...song, active: true };
+      } else {
+        return { ...song, active: false };
+      }
+    });
+    setTracks(newTracks);
+  }, [currentTrack]);
   return (
     <div className="player-container">
       <div className="duration-bar">

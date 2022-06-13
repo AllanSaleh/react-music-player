@@ -26,6 +26,7 @@ function App() {
         setIsPlaying={setIsPlaying}
         audioRef={audioRef}
         tracks={tracks}
+        setTracks={setTracks}
       />
       <Library
         tracks={tracks}
