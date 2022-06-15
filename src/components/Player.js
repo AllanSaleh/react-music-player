@@ -80,7 +80,7 @@ const Player = ({
           max={trackInfo.duration || 0}
           onChange={dragHandler}
         />
-        <p>{formatTime(trackInfo.duration)}</p>
+        <p>{trackInfo.duration ? formatTime(trackInfo.duration) : "0:00"}</p>
       </div>
       <div className="player-controllers">
         <FontAwesomeIcon
