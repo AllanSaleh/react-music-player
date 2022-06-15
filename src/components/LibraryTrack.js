@@ -1,3 +1,4 @@
+import { PlayAudioProper } from "../util";
 const LibraryTrack = ({
   track,
   setCurrentTrack,
@@ -16,14 +17,7 @@ const LibraryTrack = ({
       }
     });
     setTracks(newTracks);
-    if (isPlaying) {
-      const playPromise = audioRef.current.play();
-      if (playPromise !== undefined) {
-        playPromise.then((audio) => {
-          audioRef.current.play();
-        });
-      }
-    }
+    PlayAudioProper(isPlaying, audioRef);
   };
   return (
     <div
