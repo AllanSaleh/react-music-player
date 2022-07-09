@@ -29,7 +29,7 @@
     cursor: pointer;
   }
 }
-inpur[type="range"]:focus {
+input[type="range"]:focus {
   outline: none;
 }
 input[type="range"]::-webkit-slider-thumb {
