@@ -81,7 +81,12 @@ const Player = ({
     <div className="player-container">
       <div className="duration-bar">
         <p>{formatTime(trackInfo.currentTime)}</p>
-        <div className="track-bar">
+        <div
+          className="track-bar"
+          style={{
+            background: `linear-gradient(to right, ${currentTrack.color[0]},${currentTrack.color[1]})`,
+          }}
+        >
           <input
             type="range"
             min={0}
