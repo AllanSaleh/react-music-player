@@ -73,13 +73,16 @@ const Player = ({
     <div className="player-container">
       <div className="duration-bar">
         <p>{formatTime(trackInfo.currentTime)}</p>
-        <input
-          type="range"
-          min={0}
-          value={trackInfo.currentTime}
-          max={trackInfo.duration || 0}
-          onChange={dragHandler}
-        />
+        <div className="track-bar">
+          <input
+            type="range"
+            min={0}
+            value={trackInfo.currentTime}
+            max={trackInfo.duration || 0}
+            onChange={dragHandler}
+          />
+          <div className="animate-track-bar"></div>
+        </div>
         <p>{trackInfo.duration ? formatTime(trackInfo.duration) : "0:00"}</p>
       </div>
       <div className="player-controllers">
