@@ -89,7 +89,12 @@ const Player = ({
             max={trackInfo.duration || 0}
             onChange={dragHandler}
           />
-          <div className="animate-track-bar"></div>
+          <div
+            className="animate-track-bar"
+            style={{
+              transform: `translateX(${trackInfo.trackPlayedPercentage}%)`,
+            }}
+          ></div>
         </div>
         <p>{trackInfo.duration ? formatTime(trackInfo.duration) : "0:00"}</p>
       </div>
