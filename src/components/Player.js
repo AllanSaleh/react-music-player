@@ -17,7 +17,11 @@ const Player = ({
   tracks,
   setTracks,
 }) => {
-  const [trackInfo, setTrackInfo] = useState({ currentTime: 0, duration: 0 });
+  const [trackInfo, setTrackInfo] = useState({
+    currentTime: 0,
+    duration: 0,
+    trackPlayedPercentage: 0,
+  });
   const playSongHandler = () => {
     if (isPlaying) {
       audioRef.current.pause();
@@ -27,10 +31,14 @@ const Player = ({
     setIsPlaying(!isPlaying);
   };
   const timeUpdateHandler = (e) => {
+    const current = e.target.currentTime;
+    const duration = e.target.duration;
+    const roundedTrackPlayedPercentage = Math.round((current / duration) * 100);
     setTrackInfo({
       ...trackInfo,
-      currentTime: e.target.currentTime,
-      duration: e.target.duration,
+      currentTime: current,
+      duration,
+      trackPlayedPercentage: roundedTrackPlayedPercentage,
     });
   };
   const dragHandler = (e) => {
