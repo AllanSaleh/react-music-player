@@ -1,4 +1,3 @@
-import { PlayAudioProper } from "../util";
 const LibraryTrack = ({
   track,
   setCurrentTrack,
@@ -7,8 +6,8 @@ const LibraryTrack = ({
   tracks,
   setTracks,
 }) => {
-  const trackSelectHandler = () => {
-    setCurrentTrack(track);
+  const trackSelectHandler = async () => {
+    await setCurrentTrack(track);
     const newTracks = tracks.map((song) => {
       if (song.id === track.id) {
         return { ...song, active: true };
@@ -17,7 +16,7 @@ const LibraryTrack = ({
       }
     });
     setTracks(newTracks);
-    PlayAudioProper(isPlaying, audioRef);
+    if (isPlaying) audioRef.current.play();
   };
   return (
     <div
