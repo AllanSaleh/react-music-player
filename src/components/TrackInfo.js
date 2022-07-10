@@ -4,7 +4,7 @@ const TrackInfo = ({ currentTrack, isPlaying }) => {
       <img
         alt={currentTrack.name}
         src={currentTrack.cover}
-        className={`${isPlaying && "image-rotate"}`}
+        className={`image-rotate ${isPlaying && "image-rotate-start"}`}
       />
       <h2>{currentTrack.name}</h2>
       <h3>{currentTrack.artist}</h3>

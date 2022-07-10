@@ -7,8 +7,6 @@
   img {
     width: 20%;
     border-radius: 50%;
-    animation: spin 20s linear infinite;
-    animation-play-state: paused;
   }
   h2 {
     padding: 3rem 1rem 1rem 1rem;
@@ -18,7 +16,11 @@
   }
 }
 .image-rotate {
-  animation-play-state: running !important;
+  animation: spin 20s linear infinite;
+  animation-play-state: paused;
+}
+.image-rotate-start {
+  animation-play-state: running;
 }
 @-moz-keyframes spin {
   100% {
