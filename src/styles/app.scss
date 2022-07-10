@@ -16,6 +16,12 @@ h4 {
   font-weight: 400;
   color: rgb(100, 100, 100);
 }
+.App {
+  transition: all 0.5s ease;
+}
+.library-active-animation {
+  margin-left: 30%;
+}
 
 @import "./trackInfo";
 @import "./player";

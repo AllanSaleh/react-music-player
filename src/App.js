@@ -13,7 +13,7 @@ function App() {
   const [libraryStatus, setLibraryStatus] = useState(false);
   const audioRef = useRef(null);
   return (
-    <div className="App">
+    <div className={`App ${libraryStatus ? "library-active-animation" : ""}`}>
       <Navbar
         libraryStatus={libraryStatus}
         setLibraryStatus={setLibraryStatus}
