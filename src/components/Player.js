@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPlay,
@@ -21,6 +21,18 @@ const Player = ({
     duration: 0,
     trackPlayedPercentage: 0,
   });
+
+  const libraryUpdateHandler = (nextPrev) => {
+    const newTracks = tracks.map((song) => {
+      if (song.id === nextPrev.id) {
+        return { ...song, active: true };
+      } else {
+        return { ...song, active: false };
+      }
+    });
+    setTracks(newTracks);
+  };
+
   const playSongHandler = () => {
     if (isPlaying) {
       audioRef.current.pause();
@@ -29,6 +41,7 @@ const Player = ({
     }
     setIsPlaying(!isPlaying);
   };
+
   const timeUpdateHandler = (e) => {
     const current = e.target.currentTime;
     const duration = e.target.duration;
@@ -40,32 +53,39 @@ const Player = ({
       trackPlayedPercentage: roundedTrackPlayedPercentage,
     });
   };
+
   const dragHandler = (e) => {
     audioRef.current.currentTime = e.target.value;
     setTrackInfo({ ...trackInfo, currentTime: e.target.value });
   };
+
   const formatTime = (time) => {
     return (
       Math.floor(time / 60) + ":" + ("0" + Math.floor(time % 60)).slice(-2)
     );
   };
+
   const skipTrackHandler = async (direction) => {
     const currentTrackIndex = tracks.findIndex(
       (track) => track.id === currentTrack.id
     );
     if (direction === "skip-forward") {
       await setCurrentTrack(tracks[(currentTrackIndex + 1) % tracks.length]);
+      libraryUpdateHandler(tracks[(currentTrackIndex + 1) % tracks.length]);
     }
     if (direction === "skip-back") {
       if ((currentTrackIndex - 1) % tracks.length === -1) {
         await setCurrentTrack(tracks[tracks.length - 1]);
+        libraryUpdateHandler(tracks[tracks.length - 1]);
         if (isPlaying) audioRef.current.play();
         return;
       }
       await setCurrentTrack(tracks[(currentTrackIndex - 1) % tracks.length]);
+      libraryUpdateHandler(tracks[(currentTrackIndex - 1) % tracks.length]);
     }
     if (isPlaying) audioRef.current.play();
   };
+  
   const trackEndHandler = async () => {
     const currentTrackIndex = tracks.findIndex(
       (track) => track.id === currentTrack.id
@@ -73,16 +93,7 @@ const Player = ({
     await setCurrentTrack(tracks[(currentTrackIndex + 1) % tracks.length]);
     if (isPlaying) audioRef.current.play();
   };
-  useEffect(() => {
-    const newTracks = tracks.map((song) => {
-      if (song.id === currentTrack.id) {
-        return { ...song, active: true };
-      } else {
-        return { ...song, active: false };
-      }
-    });
-    setTracks(newTracks);
-  }, [currentTrack]);
+
   return (
     <div className="player-container">
       <div className="duration-bar">
