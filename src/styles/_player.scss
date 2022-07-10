@@ -59,8 +59,23 @@ input[type="range"]::-moz-range-thumb {
   transform: translateX(0%);
   pointer-events: none;
 }
-.volume-bar{
-
+.volume {
+  position: relative;
+}
+.volume-bar {
+  position: absolute;
+  top: 0;
+  left: 2rem;
+  bottom: 0;
+  transform: translateX(-3rem);
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.5s ease-in-out;
+}
+.volume-bar-active {
+  transform: translateX(1rem);
+  visibility: visible;
+  opacity: 100;
 }
 
 @media screen and (max-width: 768px) {

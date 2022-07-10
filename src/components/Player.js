@@ -23,6 +23,7 @@ const Player = ({
     trackPlayedPercentage: 0,
   });
   const [volume, setVolume] = useState(0);
+  const [showVolumeBar, setShowVolumeBar] = useState(false);
 
   const libraryUpdateHandler = (nextPrev) => {
     const newTracks = tracks.map((song) => {
@@ -99,7 +100,6 @@ const Player = ({
   const volumeChangeHandler = (e) => {
     setVolume(e.target.value);
   };
-  console.log(volume);
 
   return (
     <div className="player-container">
@@ -146,14 +146,18 @@ const Player = ({
           size="2x"
           onClick={() => skipTrackHandler("skip-forward")}
         />
-        <div className="volume-bar">
-          <FontAwesomeIcon icon={faVolumeDown} className="volume" />
+        <div className="volume">
+          <FontAwesomeIcon
+            icon={faVolumeDown}
+            onClick={() => setShowVolumeBar(!showVolumeBar)}
+          />
           <input
             type="range"
             min={0}
             value={volume}
             max={11}
             onChange={volumeChangeHandler}
+            className={`volume-bar ${showVolumeBar ? "volume-bar-active" : ""}`}
           />
         </div>
       </div>
