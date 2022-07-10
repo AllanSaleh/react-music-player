@@ -5,6 +5,7 @@ import {
   faAngleLeft,
   faAngleRight,
   faPause,
+  faVolumeDown,
 } from "@fortawesome/free-solid-svg-icons";
 
 const Player = ({
@@ -21,6 +22,7 @@ const Player = ({
     duration: 0,
     trackPlayedPercentage: 0,
   });
+  const [volume, setVolume] = useState(0);
 
   const libraryUpdateHandler = (nextPrev) => {
     const newTracks = tracks.map((song) => {
@@ -85,7 +87,7 @@ const Player = ({
     }
     if (isPlaying) audioRef.current.play();
   };
-  
+
   const trackEndHandler = async () => {
     const currentTrackIndex = tracks.findIndex(
       (track) => track.id === currentTrack.id
@@ -93,6 +95,11 @@ const Player = ({
     await setCurrentTrack(tracks[(currentTrackIndex + 1) % tracks.length]);
     if (isPlaying) audioRef.current.play();
   };
+
+  const volumeChangeHandler = (e) => {
+    setVolume(e.target.value);
+  };
+  console.log(volume);
 
   return (
     <div className="player-container">
@@ -128,10 +135,10 @@ const Player = ({
           onClick={() => skipTrackHandler("skip-back")}
         />
         <FontAwesomeIcon
-          onClick={playSongHandler}
           icon={isPlaying ? faPause : faPlay}
           className="play"
           size="2x"
+          onClick={playSongHandler}
         />
         <FontAwesomeIcon
           icon={faAngleRight}
@@ -139,6 +146,16 @@ const Player = ({
           size="2x"
           onClick={() => skipTrackHandler("skip-forward")}
         />
+        <div className="volume-bar">
+          <FontAwesomeIcon icon={faVolumeDown} className="volume" />
+          <input
+            type="range"
+            min={0}
+            value={volume}
+            max={11}
+            onChange={volumeChangeHandler}
+          />
+        </div>
       </div>
       <audio
         ref={audioRef}

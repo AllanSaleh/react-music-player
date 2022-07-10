@@ -59,6 +59,9 @@ input[type="range"]::-moz-range-thumb {
   transform: translateX(0%);
   pointer-events: none;
 }
+.volume-bar{
+
+}
 
 @media screen and (max-width: 768px) {
   .duration-bar {
