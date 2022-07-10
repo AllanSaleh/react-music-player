@@ -66,6 +66,13 @@ const Player = ({
     }
     if (isPlaying) audioRef.current.play();
   };
+  const trackEndHandler = async () => {
+    const currentTrackIndex = tracks.findIndex(
+      (track) => track.id === currentTrack.id
+    );
+    await setCurrentTrack(tracks[(currentTrackIndex + 1) % tracks.length]);
+    if (isPlaying) audioRef.current.play();
+  };
   useEffect(() => {
     const newTracks = tracks.map((song) => {
       if (song.id === currentTrack.id) {
@@ -124,9 +131,10 @@ const Player = ({
       </div>
       <audio
         ref={audioRef}
+        src={currentTrack.audio}
         onLoadedMetadata={timeUpdateHandler}
         onTimeUpdate={timeUpdateHandler}
-        src={currentTrack.audio}
+        onEnded={trackEndHandler}
       />
     </div>
   );
