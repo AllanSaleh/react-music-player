@@ -18,7 +18,7 @@ function App() {
         libraryStatus={libraryStatus}
         setLibraryStatus={setLibraryStatus}
       />
-      <TrackInfo currentTrack={currentTrack} />
+      <TrackInfo currentTrack={currentTrack} isPlaying={isPlaying} />
       <Player
         currentTrack={currentTrack}
         setCurrentTrack={setCurrentTrack}

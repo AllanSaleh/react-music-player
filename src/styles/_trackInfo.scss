@@ -7,12 +7,33 @@
   img {
     width: 20%;
     border-radius: 50%;
+    animation: spin 20s linear infinite;
+    animation-play-state: paused;
   }
   h2 {
     padding: 3rem 1rem 1rem 1rem;
   }
   h3 {
     font-size: 1rem;
+  }
+}
+.image-rotate {
+  animation-play-state: running !important;
+}
+@-moz-keyframes spin {
+  100% {
+    -moz-transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 
