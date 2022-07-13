@@ -22,7 +22,7 @@ const Player = ({
     duration: 0,
     trackPlayedPercentage: 0,
   });
-  const [volume, setVolume] = useState(0);
+  const [volume, setVolume] = useState(100);
   const [showVolumeBar, setShowVolumeBar] = useState(false);
 
   const libraryUpdateHandler = (nextPrev) => {
@@ -123,7 +123,7 @@ const Player = ({
             style={{
               transform: `translateX(${trackInfo.trackPlayedPercentage}%)`,
             }}
-          ></div>
+          />
         </div>
         <p>{trackInfo.duration ? formatTime(trackInfo.duration) : "0:00"}</p>
       </div>
@@ -151,14 +151,28 @@ const Player = ({
             icon={faVolumeDown}
             onClick={() => setShowVolumeBar(!showVolumeBar)}
           />
-          <input
-            type="range"
-            min={0}
-            value={volume}
-            max={11}
-            onChange={volumeChangeHandler}
+          <div
             className={`volume-bar ${showVolumeBar ? "volume-bar-active" : ""}`}
-          />
+          >
+            <div className="volume-slider">
+              <input
+                type="range"
+                min={0}
+                value={volume}
+                max={100}
+                onChange={volumeChangeHandler}
+                style={{
+                  background: `linear-gradient(to right, ${currentTrack.color[0]},${currentTrack.color[1]})`,
+                }}
+              />
+              <div
+                className="animate-volume-slider"
+                style={{
+                  transform: `translateX(${volume}%)`,
+                }}
+              />
+            </div>
+          </div>
         </div>
       </div>
       <audio
