@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPlay,
@@ -101,6 +101,10 @@ const Player = ({
     setVolume(e.target.value);
   };
 
+  useEffect(() => {
+    audioRef.current.volume = volume / 100;
+  }, [volume]);
+  
   return (
     <div className="player-container">
       <div className="duration-bar">
