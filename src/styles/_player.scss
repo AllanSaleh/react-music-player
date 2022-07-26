@@ -83,7 +83,7 @@ input[type="range"]::-moz-range-thumb {
   position: relative;
   border-radius: 1rem;
   overflow: hidden;
-    input {
+  input {
     -webkit-appearance: none;
     background: transparent;
     cursor: pointer;
@@ -106,5 +106,24 @@ input[type="range"]::-moz-range-thumb {
   }
   .player-controllers {
     width: 60%;
+  }
+  .volume-slider {
+    width: 75%;
+  }
+  .volume-bar {
+    bottom: -50%;
+    left: 40%;
+    transform: translateX(-44%) rotate(-90deg);
+    // position: absolute;
+    // top: 20%;
+    // left: 2rem;
+    // bottom: 0;
+    // transform: translateX(-2rem);
+    // visibility: hidden;
+    // opacity: 0;
+    // transition: all 0.5s ease-in-out;
+  }
+  .volume-bar-active {
+    transform: translate(-44%, -370%) rotate(-90deg);
   }
 }
