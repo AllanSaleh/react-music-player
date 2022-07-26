@@ -83,6 +83,12 @@ input[type="range"]::-moz-range-thumb {
   position: relative;
   border-radius: 1rem;
   overflow: hidden;
+    input {
+    // width: 100%;
+    -webkit-appearance: none;
+    background: transparent;
+    cursor: pointer;
+  }
 }
 .animate-volume-slider {
   background: rgb(204, 204, 204);
