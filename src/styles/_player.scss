@@ -108,12 +108,12 @@ input[type="range"]::-moz-range-thumb {
     width: 60%;
   }
   .volume-slider {
-    width: 75%;
+    width: 65%;
   }
   .volume-bar {
     bottom: -50%;
     left: 40%;
-    transform: translateX(-44%) rotate(-90deg);
+    transform: translate(-44%,-300%) rotate(-90deg);
     // position: absolute;
     // top: 20%;
     // left: 2rem;
@@ -124,6 +124,6 @@ input[type="range"]::-moz-range-thumb {
     // transition: all 0.5s ease-in-out;
   }
   .volume-bar-active {
-    transform: translate(-44%, -370%) rotate(-90deg);
+    transform: translate(-44%, -360%) rotate(-90deg);
   }
 }
