@@ -41,6 +41,7 @@
 
 @media screen and (max-width: 768px) {
   .track-info-container {
+      min-height: 50vh;
     img {
       width: 60%;
     }
